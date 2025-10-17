@@ -33,33 +33,33 @@ Un **fake** a une implémentation fonctionnelle mais simplifiée (ex: une base d
 Récupère tous les produits disponibles.
 - **Response**: `{ products: Product[] }`
 
-### `PATCH /cart`
+### `GET /carts/:cartId`
+Récupère le panier complet.
+- **Response**: `{ items: CartItem[], total: number }`
+
+### `GET /carts/:cartId/total`
+Calcule le total du panier avec réduction si applicable.
+- **Response**: `{ preTotal: number, discount: number, total: number }`
+
+### `PATCH /carts/:cartId`
 Ajoute un élément au panier.
 - **Body**: `{ productId: string, quantity: number }`
 - **Response**: `200 OK`
 
-### `GET /cart`
-Récupère le panier complet.
-- **Response**: `{ items: CartItem[], total: number }`
-
-### `GET /cart/total`
-Calcule le total du panier avec réduction si applicable.
-- **Response**: `{ preTotal: number, discount: number, total: number }`
-
-### `DELETE /cart`
+### `DELETE /carts/:cartId`
 Supprime tout le contenu du panier.
 - **Response**: `204 No Content`
 
-### `GET /cart/:id`
+### `GET /carts/:cartId/items/:itemId`
 Récupère un article spécifique du panier.
 - **Response**: `{ item: CartItem }`
 
-### `PATCH /cart/:id`
+### `PATCH /carts/:cartId/items/:itemId`
 Modifie la quantité d'un article du panier.
 - **Body**: `{ quantity: number }`
 - **Response**: `200 OK`
 
-### `DELETE /cart/:id`
+### `DELETE /carts/:cartId/items/:itemId`
 Supprime un article du panier.
 - **Response**: `204 No Content`
 
